@@ -1,0 +1,7 @@
+# Streamlit Community Cloud installs Python dependencies from this file.
+# Lower bounds match the locally verified environment (Python 3.13.5);
+# upper bounds guard against future major-version breakage.
+streamlit>=1.45,<2.0
+numpy>=2.1,<3.0
+pandas>=2.2,<3.0
+plotly>=5.24,<7.0

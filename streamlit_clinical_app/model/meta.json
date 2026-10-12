@@ -1,0 +1,178 @@
+{
+  "features": ["revascularization", "d_dimer", "uric_acid", "platelet", "wbc", "statin", "age", "albumin", "spironolactone", "creatinine", "hemoglobin", "clopidogrel", "prior_mi", "bnp"],
+  "positive_label": "Death",
+  "negative_label": "Alive",
+  "target": "death",
+  "default_model": "logistic",
+  "n_train": 1052,
+  "n_events": 194,
+  "holdout": {
+    "n": 315,
+    "n_events": 58
+  },
+  "discrete_values": {
+    "revascularization": [0, 1, 2],
+    "d_dimer": {},
+    "uric_acid": {},
+    "platelet": {},
+    "wbc": {},
+    "statin": [0, 1],
+    "age": {},
+    "albumin": {},
+    "spironolactone": [0, 1],
+    "creatinine": {},
+    "hemoglobin": {},
+    "clopidogrel": [0, 1],
+    "prior_mi": [0, 1],
+    "bnp": {}
+  },
+  "ranges": {
+    "revascularization": {},
+    "d_dimer": {
+      "min": 0.035999999999999997,
+      "q25": 0.40000000000000002,
+      "med": 0.77500000000000002,
+      "q75": 1.5425,
+      "max": 76.280000000000001,
+      "mean": 1.7940281653992396
+    },
+    "uric_acid": {
+      "min": 74,
+      "q25": 317.29999999999995,
+      "med": 402,
+      "q75": 507.17500000000007,
+      "max": 1173.5,
+      "mean": 430.772747148289
+    },
+    "platelet": {
+      "min": 5,
+      "q25": 180,
+      "med": 220,
+      "q75": 278,
+      "max": 1120,
+      "mean": 233.92927756653992
+    },
+    "wbc": {
+      "min": 2.8100000000000001,
+      "q25": 6.9000000000000004,
+      "med": 9.0199999999999996,
+      "q75": 11.4,
+      "max": 40.159999999999997,
+      "mean": 9.9733127376425852
+    },
+    "statin": {},
+    "age": {
+      "min": 27,
+      "q25": 68,
+      "med": 75,
+      "q75": 81.25,
+      "max": 97,
+      "mean": 74.26520912547528
+    },
+    "albumin": {
+      "min": 23.899999999999999,
+      "q25": 34.700000000000003,
+      "med": 37.600000000000001,
+      "q75": 40,
+      "max": 85.599999999999994,
+      "mean": 37.409534220532322
+    },
+    "spironolactone": {},
+    "creatinine": {
+      "min": 30.449999999999999,
+      "q25": 72,
+      "med": 95.349999999999994,
+      "q75": 141,
+      "max": 10934,
+      "mean": 269.97438212927756
+    },
+    "hemoglobin": {
+      "min": 9.5999999999999996,
+      "q25": 93,
+      "med": 113,
+      "q75": 127,
+      "max": 180,
+      "mean": 109.37452471482889
+    },
+    "clopidogrel": {},
+    "prior_mi": {},
+    "bnp": {
+      "min": 5,
+      "q25": 637.5,
+      "med": 2030.5,
+      "q75": 5341,
+      "max": 127907,
+      "mean": 6242.7387452471485
+    }
+  },
+  "models": {
+    "logistic": {
+      "youden_cut": 0.16025247419327959,
+      "perf_metrics": [
+        {
+          "Metric": "AUC",
+          "Threshold 0.5": 0.77900000000000003,
+          "Youden threshold": 0.77900000000000003
+        },
+        {
+          "Metric": "Accuracy",
+          "Threshold 0.5": 0.82499999999999996,
+          "Youden threshold": 0.64400000000000002
+        },
+        {
+          "Metric": "Sensitivity",
+          "Threshold 0.5": 0.155,
+          "Youden threshold": 0.79300000000000004
+        },
+        {
+          "Metric": "Specificity",
+          "Threshold 0.5": 0.97699999999999998,
+          "Youden threshold": 0.61099999999999999
+        }
+      ],
+      "source": {
+        "learner": "logistic",
+        "engine": "stats::glm",
+        "family": "binomial",
+        "run": "run40 (seed 1254, E53)"
+      }
+    },
+    "forest": {
+      "youden_cut": 0.18417753136245374,
+      "n_trees": 680,
+      "perf_metrics": [
+        {
+          "Metric": "AUC",
+          "Threshold 0.5": 0.78400000000000003,
+          "Youden threshold": 0.78400000000000003
+        },
+        {
+          "Metric": "Accuracy",
+          "Threshold 0.5": 0.81299999999999994,
+          "Youden threshold": 0.64100000000000001
+        },
+        {
+          "Metric": "Sensitivity",
+          "Threshold 0.5": 0.034000000000000002,
+          "Youden threshold": 0.79300000000000004
+        },
+        {
+          "Metric": "Specificity",
+          "Threshold 0.5": 0.98799999999999999,
+          "Youden threshold": 0.60699999999999998
+        }
+      ],
+      "source": {
+        "learner": "randomForest",
+        "engine": "ranger",
+        "num.trees": 680,
+        "mtry": 4,
+        "min.node.size": 10,
+        "replace": false,
+        "sample.fraction": {},
+        "ranger_version": "0.17.0",
+        "run": "run39/run40 (seed 1254)"
+      }
+    }
+  }
+}
